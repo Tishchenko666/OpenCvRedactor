@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <center>
+        <ImageView fx:id="mainImage" fitHeight="500.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_LEFT">
+            <viewport>
+                <Rectangle2D />
+            </viewport>
+            <BorderPane.margin>
+                <Insets left="50.0" />
+            </BorderPane.margin>
+        </ImageView>
+    </center>
+    <top>
+        <HBox prefHeight="40.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+            <children>
+                <RadioButton fx:id="addTextRB" mnemonicParsing="false" onAction="#enableText" text="Добавить надпись" textFill="#0606f5">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="chooseMode" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="makeMirrorRB" mnemonicParsing="false" onAction="#enableMirror" text="Отражение" textFill="#17b517" toggleGroup="$chooseMode">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </RadioButton>
+                <RadioButton fx:id="changeColorRB" mnemonicParsing="false" onAction="#enableColor" selected="true" text="Изменить цвет" textFill="#e8800b" toggleGroup="$chooseMode">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </RadioButton>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <padding>
+                <Insets left="10.0" top="10.0" />
+            </padding>
+        </HBox>
+    </top>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1000.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="loadImageButton" mnemonicParsing="false" onAction="#loadImage" text="Загрузить картинку" />
+                <Button fx:id="saveImageButton" mnemonicParsing="false" onAction="#saveImage" text="Сохранить картинку" />
+                <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetImage" text="Сбросить" />
+                <Button fx:id="changeButton" mnemonicParsing="false" onAction="#changeImage" text="Изменить">
+                    <HBox.margin>
+                        <Insets left="100.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
+    <right>
+        <VBox prefHeight="610.0" prefWidth="215.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox fx:id="textVBox" disable="true" prefWidth="215.0" spacing="5.0" style="-fx-border-color: blue;">
+                    <children>
+                        <Label text="Ввести текст">
+                            <VBox.margin>
+                                <Insets left="10.0" top="5.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="textField">
+                            <VBox.margin>
+                                <Insets left="5.0" right="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Цвет текста">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="textColorCB" prefWidth="150.0">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" />
+                            </VBox.margin>
+                        </ComboBox>
+                        <Label text="Цвет фона">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="backColorCB" prefWidth="150.0">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" />
+                            </VBox.margin>
+                        </ComboBox>
+                        <Label text="Размещение текста">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <RadioButton fx:id="textIntoImageRB" mnemonicParsing="false" selected="true" text="В картинке">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                            <toggleGroup>
+                                <ToggleGroup fx:id="textMode" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="textOnImageRB" mnemonicParsing="false" text="Поверх картинки" toggleGroup="$textMode">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="5.0" />
+                            </padding>
+                        </RadioButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets right="3.0" />
+                    </VBox.margin>
+                </VBox>
+                <VBox fx:id="mirrorVBox" disable="true" prefWidth="215.0" spacing="5.0" style="-fx-border-color: green;">
+                    <children>
+                        <Label text="Выбрать режим">
+                            <VBox.margin>
+                                <Insets left="10.0" top="5.0" />
+                            </VBox.margin>
+                        </Label>
+                        <CheckBox fx:id="verticalCheckBox" mnemonicParsing="false" onAction="#countFlags" text="Вертикальный">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" />
+                            </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="horizontalCheckBox" mnemonicParsing="false" onAction="#countFlags" text="Горизонтальный">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" />
+                            </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="mergeOriginalCheckBox" mnemonicParsing="false" onAction="#detouchMirrorMode" text="Объединить с оригиналом">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" top="20.0" />
+                            </VBox.margin>
+                        </CheckBox>
+                        <RadioButton fx:id="mergeVerticalRB" mnemonicParsing="false" selected="true" text="По вертикали" visible="false">
+                            <VBox.margin>
+                                <Insets left="25.0" />
+                            </VBox.margin>
+                            <toggleGroup>
+                                <ToggleGroup fx:id="mergeMode" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="mergeHorizontalRB" mnemonicParsing="false" text="По горизонтали" toggleGroup="$mergeMode" visible="false">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="25.0" />
+                            </VBox.margin>
+                        </RadioButton>
+                    </children>
+                    <VBox.margin>
+                        <Insets right="3.0" />
+                    </VBox.margin>
+                </VBox>
+                <VBox fx:id="changeColorVBox" spacing="10.0" style="-fx-border-color: orange;">
+                    <children>
+                        <Label text="Выбрать режим">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="chooseColorModeCB" prefWidth="150.0">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="10.0" />
+                            </VBox.margin>
+                        </ComboBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets right="3.0" />
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>
